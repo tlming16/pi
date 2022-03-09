@@ -1,3 +1,5 @@
 *dist
 *build 
 *.idea 
+src/pi_compute.egg-info/
+src/pi_compute/lib/

@@ -2,10 +2,15 @@
 
 ## usage
 
+### install 
+   - `python3 -m pip install pi-compute==3.14.15` or 
+   - `python3 -m pip install  --index-url https://pypi.org/simple/ pi-compute==3.14.15`
+
+
 ### python usage
 
--   python3 setup build
--   python3 pi.py 1000 
+-   `python3 -m pi_compute.pi 1000`
+-   `import pi_compute as pi; pi.compute(1000)` 
 
 ### cpp usage
 -   `make pi_thread` for two threads
