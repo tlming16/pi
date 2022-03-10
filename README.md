@@ -3,8 +3,8 @@
 ## usage
 
 ### install 
-   - `python3 -m pip install pi-compute==3.14.15` or 
-   - `python3 -m pip install  --index-url https://pypi.org/simple/ pi-compute==3.14.15`
+   - `python3 -m pip install pi-compute` or 
+   - `python3 -m pip install  --index-url https://pypi.org/simple/ pi-compute`
 
 
 ### python usage

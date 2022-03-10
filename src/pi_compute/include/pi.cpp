@@ -4,9 +4,15 @@
 // all rights reserved
 // g++ pi.cpp -O3 -std=c++11
 // g++ -fPIC -shared -O3 -o pi_lib pi.cpp -std=c++11
-#include <future>
-#include <string>
+
+#ifdef PI_THREAD 
+
 #include <thread>
+#include <future>
+#endif 
+
+#include <string>
+
 #include <vector>
 using namespace std;
 int tiszero(const std::vector<char> &t) {
@@ -123,9 +129,12 @@ extern "C" char *pi(int digits, char *ans) {
   int q = digits + 1;
   std::vector<char> p(q + 1);
   std::vector<char> t(q + 1);
+#ifdef PI_THREAD
   std::vector<char> p1(q + 1);
   std::vector<char> t1(q + 1);
+#endif 
 
+#ifdef PI_THREAD 
   std::future<void> f = std::async(std::launch::async, [&]() {
     arctan(p, t, 5);
     mul4(p);
@@ -134,8 +143,14 @@ extern "C" char *pi(int digits, char *ans) {
       std::async(std::launch::async, [&]() { arctan(p1, t1, 239, true); });
   f.get();
   f1.get();
-  add(p, p1);
+  add(p, p1); 
   mul4(p);
+#else
+  arctan(p,t,5);
+  mul4(p);
+  arctan(p,t,239,true); 
+  mul4(p);
+#endif 
   ans[0] = '3';
   ans[1] = '.';
   for (int i = 1; i <= q; i++) {

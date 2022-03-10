@@ -4,6 +4,11 @@ from ctypes import cdll
 from ctypes import c_char_p, c_int, c_char
 
 __all__ = ["pi_func", "load_pi","compute"]
+
+__version__ = "3.14.1592"
+
+__author__="tlming16"
+
 pilib = None
 pi_func = None
 
