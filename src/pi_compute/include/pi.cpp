@@ -72,7 +72,8 @@ void sub(std::vector<char> &p, const std::vector<char> &t) {
   for (j = q; j >= 0; j--) {
     if (p[j] < t[j]) {
       p[j] -= t[j] - 10;
-      p[j - 1] -= 1;
+      if (j>=1)
+         p[j - 1] -= 1;
     } else {
       p[j] -= t[j];
     }
@@ -85,7 +86,8 @@ void add(std::vector<char> &p, const std::vector<char> &t) {
   for (j = q; j >= 0; j--) {
     if (t[j] + p[j] > 9) {
       p[j] += t[j] - 10;
-      p[j - 1] += 1;
+      if (j>=1)
+        p[j - 1] += 1;
     } else {
       p[j] += t[j];
     }
